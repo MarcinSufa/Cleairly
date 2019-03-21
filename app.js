@@ -26,7 +26,7 @@ app.get("/check", function(req, res){
     let airData = JSON.parse(body);
     let pm10Q = airData.data.iaqi.pm10.v;
     let pm25Q = airData.data.iaqi.pm25.v;
-    let temp =  airData.data.iaqi.t.v;
+    // let temp =  airData.data.iaqi.t.v;
     let timeMesure = airData.data.time.s;
     let city = airData.data.city.name;
 
@@ -35,7 +35,7 @@ app.get("/check", function(req, res){
     //   res.render("clearly", {cityName:city, pm10Value:pm10Q, pm25Value: pm25Q, tempValue: temp, timeValue:timeMesure});
     //   console.log(pm10Q, city,  timeMesure, pm25Q, temp);
     // }else {
-      res.render("clearly", {cityName:city, pm10Value:pm10Q, pm25Value: pm25Q, tempValue: temp, timeValue:timeMesure});
+      res.render("clearly", {cityName:city, pm10Value:pm10Q, pm25Value: pm25Q, tempValue: "no data", timeValue:timeMesure});
       console.log(pm10Q, city,  timeMesure, pm25Q, temp);
     // }
     });
