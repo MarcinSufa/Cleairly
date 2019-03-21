@@ -19,3 +19,6 @@
   "author": "",
   "license": "ISC"
 }
+"scripts": {
+    "start": "app.js"
+}
