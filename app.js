@@ -15,14 +15,13 @@ app.use(express.static("public"));
 
 
 
-//
 app.get("/", function(req, res){
   res.sendFile(__dirname + "/index.html");
 });
 
 app.get("/check", function(req, res){
 
-  request("https://api.waqi.info/feed/here/?token=af07c901773851274061da1a6893d13c27574486", function(error, response, body){
+  request("http://api.waqi.info/feed/here/?token=af07c901773851274061da1a6893d13c27574486", function(error, response, body){
 
     let airData = JSON.parse(body);
     let pm10Q = airData.data.iaqi.pm10.v;
@@ -31,25 +30,25 @@ app.get("/check", function(req, res){
     let timeMesure = airData.data.time.s;
     let city = airData.data.city.name;
 
-    if (temp == null) {
-      temp == 'no data';
+    // if (temp == null) {
+    //   temp == 'no data';
+    //   res.render("clearly", {cityName:city, pm10Value:pm10Q, pm25Value: pm25Q, tempValue: temp, timeValue:timeMesure});
+    //   console.log(pm10Q, city,  timeMesure, pm25Q, temp);
+    // }else {
       res.render("clearly", {cityName:city, pm10Value:pm10Q, pm25Value: pm25Q, tempValue: temp, timeValue:timeMesure});
       console.log(pm10Q, city,  timeMesure, pm25Q, temp);
-    }else {
-      res.render("clearly", {cityName:city, pm10Value:pm10Q, pm25Value: pm25Q, tempValue: temp, timeValue:timeMesure});
-      console.log(pm10Q, city,  timeMesure, pm25Q, temp);
-    }
+    // }
     });
 
 });
 
 
-app.post("/check", function (req, res){
-});
-
-app.post("/", function (req, res){
-});
-
+// app.post("/check", function (req, res){
+// });
+//
+// app.post("/", function (req, res){
+// });
+//
 
 
 app.listen(process.env.PORT || 5000);
