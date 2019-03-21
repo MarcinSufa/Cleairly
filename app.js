@@ -7,8 +7,8 @@ const request = require('request');
 
 const app = express();
 app.set('view engine', 'ejs');
-// app.use(express.static(__dirname + '/public'));
-//
+app.use(express.static(__dirname + '/public'));
+
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
@@ -22,7 +22,7 @@ app.get("/", function(req, res){
 
 app.get("/check", function(req, res){
 
-  request("http://api.waqi.info/feed/here/?token=af07c901773851274061da1a6893d13c27574486", function(error, response, body){
+  request("https://api.waqi.info/feed/here/?token=af07c901773851274061da1a6893d13c27574486", function(error, response, body){
 
     let airData = JSON.parse(body);
     let pm10Q = airData.data.iaqi.pm10.v;
