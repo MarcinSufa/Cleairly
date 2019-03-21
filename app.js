@@ -43,12 +43,12 @@ app.get("/check", function(req, res){
 });
 
 
-// app.post("/check", function (req, res){
-// });
-//
-// app.post("/", function (req, res){
-// });
-//
+app.post("/check", function (req, res){
+});
+
+app.post("/", function (req, res){
+});
+
 
 
 app.listen(process.env.PORT || 5000);
